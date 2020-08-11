@@ -1,36 +1,45 @@
 var db = require("../helper/DBUtil");
 
-// const insertUser = async (param, createdBy) => {
-//   return new Promise(function (resolve, reject) {
-//     let sql =
-//       "INSERT INTO tb_m_user" +
-//       "(id,name,email,password,created_date,created_by,updated_date,updated_by)" +
-//       "VALUES" +
-//       "?";
-//     let dt = new Date();
-//     var values = [
-//       [
-//         param.id,
-//         param.name,
-//         param.email,
-//         param.password,
-//         dt,
-//         createdBy,
-//         dt,
-//         createdBy,
-//       ],
-//     ];
+const insertSiswa = async (param) => {
+  return new Promise(function (resolve, reject) {
+    let sql =
+      "INSERT INTO siswa" +
+      "(id_siswa,nama_lengkap,jenis_kelamin,tempat_lahir,tanggal_lahir,agama,kewarganegaraan,kebutuhan_khusus, alamat, tempat_tinggal, moda_transportasi, layak_pip, bank_name, akta_lahir, bank_account_number, bank_account_name, handphone, email)" +
+      "VALUES" +
+      "?";
+    var values = [
+      [
+        param.id_siswa,
+        param.nama_lengkap,
+        param.jenis_kelamin,
+        param.tempat_lahir,
+        param.tanggal_lahir,
+        param.agama,
+        param.kewarganegaraan,
+        param.kebutuhan_khusus,
+        param.alamat,
+        param.tempat_tinggal,
+        param.moda_transportasi,
+        param.layak_pip,
+        param.bank_name,
+        param.akta_lahir,
+        param.bank_account_number,
+        param.bank_account_name,
+        param.handphone,
+        param.email,
+      ],
+    ];
 
-//     db.query(sql, [values], function (err, result) {
-//       if (err) {
-//         console.log(err);
-//         reject(err);
-//       } else {
-//         resolve(result);
-//       }
-//     });
-//   });
-// };
+    db.query(sql, [values], function (err, result) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
 
 const selectSiswa = async (param) => {
   return new Promise(function (resolve, reject) {
@@ -47,43 +56,48 @@ const selectSiswa = async (param) => {
   });
 };
 
-// const updateUser = async (param, id) => {
-//   return new Promise(function (resolve, reject) {
-//     let sql =
-//       "UPDATE tb_m_user set name=?, email=?, updated_date=?, updated_by=? where id=?";
-//     let dt = new Date();
-//     var values = [param.name, param.email, dt, param.updatedBy, id];
+const updateSiswa = async (param, id) => {
+  return new Promise(function (resolve, reject) {
+    let sql =
+      "UPDATE siswa set nama_lengkap=?, alamat=?, handphone=?, email=? where id_siswa=?";
+    var values = [
+      param.nama_lengkap,
+      param.alamat,
+      param.handphone,
+      param.email,
+      param.id_siswa,
+    ];
 
-//     db.query(sql, values, function (err, result) {
-//       if (err) {
-//         console.log(err);
-//         reject(err);
-//       } else {
-//         resolve(result);
-//       }
-//     });
-//   });
-// };
+    db.query(sql, values, function (err, result) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
 
-// const deleteUser = async (param) => {
-//   return new Promise(function (resolve, reject) {
-//     let sql = "DELETE FROM tb_m_user where id=?";
-//     var values = [param.id];
+const deleteSiswa = async (param) => {
+  return new Promise(function (resolve, reject) {
+    let sql = "DELETE FROM siswa where id_siswa=?";
+    var values = [param.id];
 
-//     db.query(sql, values, function (err, result) {
-//       if (err) {
-//         console.log(err);
-//         reject(err);
-//       } else {
-//         resolve(result);
-//       }
-//     });
-//   });
-// };
+    db.query(sql, values, function (err, result) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        resolve(result);
+      }
+    });
+  });
+};
 
 module.exports = {
-  // insertUser,
+  insertSiswa,
   selectSiswa,
-  // updateUser,
-  // deleteUser
+  updateSiswa,
+  deleteSiswa,
 };

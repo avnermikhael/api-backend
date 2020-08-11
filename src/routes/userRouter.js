@@ -7,33 +7,32 @@ const SiswaController = require("../controller/SiswaController");
 
 const {
   searchSiswaParamSchema,
-  // insertUserParamSchema,
-  // updateUserParamSchema,
-  // deleteUserParamSchema,
+  insertSiswaParamSchema,
+  updateSiswaParamSchema,
+  deleteSiswaParamSchema,
 } = require("../schema/siswaSchema");
-const SiswaController = require("../controller/SiswaController");
 
 router
   .route("/")
   .get(
     celebrate({ query: searchSiswaParamSchema }),
     SiswaController.doSearchSiswa
+  )
+  .post(
+    celebrate({
+      body: insertSiswaParamSchema,
+    }),
+    SiswaController.doInsertSiswa
+  )
+  .put(
+    celebrate({
+      body: updateSiswaParamSchema,
+    }),
+    SiswaController.doUpdateSiswa
+  )
+  .delete(
+    celebrate({ query: deleteSiswaParamSchema }),
+    SiswaController.doDeleteSiswa
   );
-// .post(
-//   celebrate({
-//     body: insertUserParamSchema,
-//   }),
-//   UserController.doInsertUser
-// )
-// .put(
-//   celebrate({
-//     body: updateUserParamSchema,
-//   }),
-//   UserController.doUpdateUser
-// )
-// .delete(
-//   celebrate({ query: deleteUserParamSchema }),
-//   UserController.doDeleteUser
-// );
 
 module.exports = router;

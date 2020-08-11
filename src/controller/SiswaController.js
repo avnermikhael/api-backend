@@ -1,8 +1,8 @@
 const {
   selectSiswa,
-  // insertUser,
-  // updateUser,
-  // deleteUser,
+  insertSiswa,
+  updateSiswa,
+  deleteSiswa,
 } = require("../model/Siswa");
 
 class SiswaController {
@@ -18,41 +18,41 @@ class SiswaController {
     }
   }
 
-  // async doInsertUser(req, res) {
-  //   const param = req.body;
-  //   try {
-  //     const result = await insertUser(param, param.createdBy);
-  //     res.status(200).send({
-  //       result,
-  //     });
-  //   } catch (err) {
-  //     console.log("doInsertUser", err);
-  //   }
-  // }
+  async doInsertSiswa(req, res) {
+    const param = req.body;
+    try {
+      const result = await insertSiswa(param);
+      res.status(200).send({
+        result,
+      });
+    } catch (err) {
+      console.log("doInsertSiswa", err);
+    }
+  }
 
-  // async doUpdateUser(req, res) {
-  //   const param = req.body;
-  //   try {
-  //     const result = await updateUser(param, param.id);
-  //     res.status(200).send({
-  //       result,
-  //     });
-  //   } catch (err) {
-  //     console.log("doUpdateUser", err);
-  //   }
-  // }
+  async doUpdateSiswa(req, res) {
+    const param = req.body;
+    try {
+      const result = await updateSiswa(param, param.id);
+      res.status(200).send({
+        result,
+      });
+    } catch (err) {
+      console.log("doUpdateSiswa", err);
+    }
+  }
 
-  // async doDeleteUser(req, res) {
-  //   const param = req.query;
-  //   try {
-  //     const result = await deleteUser(param);
-  //     res.status(200).send({
-  //       result,
-  //     });
-  //   } catch (err) {
-  //     console.log("doDeleteUser", err);
-  //   }
-  // }
+  async doDeleteSiswa(req, res) {
+    const param = req.query;
+    try {
+      const result = await deleteSiswa(param);
+      res.status(200).send({
+        result,
+      });
+    } catch (err) {
+      console.log("doDeleteSiswa", err);
+    }
+  }
 }
 
 module.exports = new SiswaController();

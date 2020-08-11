@@ -3,33 +3,37 @@ const router = express.Router();
 
 const { celebrate } = require("celebrate");
 
-const UserController = require("../controller/UserController");
+const SiswaController = require("../controller/SiswaController");
 
 const {
-  searchUserParamSchema,
-  insertUserParamSchema,
-  updateUserParamSchema,
-  deleteUserParamSchema,
-} = require("../schema/userSchema");
+  searchSiswaParamSchema,
+  // insertUserParamSchema,
+  // updateUserParamSchema,
+  // deleteUserParamSchema,
+} = require("../schema/siswaSchema");
+const SiswaController = require("../controller/SiswaController");
 
 router
   .route("/")
-  .get(celebrate({ query: searchUserParamSchema }), UserController.doSearchUSer)
-  .post(
-    celebrate({
-      body: insertUserParamSchema,
-    }),
-    UserController.doInsertUser
-  )
-  .put(
-    celebrate({
-      body: updateUserParamSchema,
-    }),
-    UserController.doUpdateUser
-  )
-  .delete(
-    celebrate({ query: deleteUserParamSchema }),
-    UserController.doDeleteUser
+  .get(
+    celebrate({ query: searchSiswaParamSchema }),
+    SiswaController.doSearchSiswa
   );
+// .post(
+//   celebrate({
+//     body: insertUserParamSchema,
+//   }),
+//   UserController.doInsertUser
+// )
+// .put(
+//   celebrate({
+//     body: updateUserParamSchema,
+//   }),
+//   UserController.doUpdateUser
+// )
+// .delete(
+//   celebrate({ query: deleteUserParamSchema }),
+//   UserController.doDeleteUser
+// );
 
 module.exports = router;

@@ -3,7 +3,7 @@ const router = express.Router();
 
 const { celebrate } = require("celebrate");
 
-const AyahController = require("../controller/IbuController");
+const IbuController = require("../controller/IbuController");
 
 const {
   searchIbuParamSchema,
@@ -11,7 +11,6 @@ const {
   updateIbuParamSchema,
   deleteIbuParamSchema,
 } = require("../schema/ibuSchema");
-const IbuController = require("../controller/IbuController");
 
 router
   .route("/")

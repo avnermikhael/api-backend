@@ -1,10 +1,15 @@
-const { selectIbu, insertIbu, udpateIbu, deleteIbu } = require("../model/Ibu");
+const {
+  selectSiswaPrestasi,
+  insertSiswaPrestasi,
+  udpateSiswaPrestasi,
+  deleteSiswaPrestasi,
+} = require("../model/SiswaPrestasi");
 
-class IbuController {
-  async doSearchIbu(req, res) {
+class SiswaPrestasiController {
+  async doSearchSiswaPrestasi(req, res) {
     const param = req.query;
     try {
-      const result = await selectIbu(param);
+      const result = await selectSiswaPrestasi(param);
       res.status(200).send({
         result,
       });
@@ -13,10 +18,10 @@ class IbuController {
     }
   }
 
-  async doInsertIbu(req, res) {
+  async doInsertSiswaPrestasi(req, res) {
     const param = req.body;
     try {
-      const result = await insertIbu(param);
+      const result = await insertSiswaPrestasi(param);
       res.status(200).send({
         result,
       });
@@ -25,10 +30,10 @@ class IbuController {
     }
   }
 
-  async doUpdateIbu(req, res) {
+  async doUpdateSiswaPrestasi(req, res) {
     const param = req.body;
     try {
-      const result = await udpateIbu(param, param.id);
+      const result = await udpateSiswaPrestasi(param, param.id);
       res.status(200).send({
         result,
       });
@@ -37,10 +42,10 @@ class IbuController {
     }
   }
 
-  async doDeleteIbu(req, res) {
+  async doDeleteSiswaPrestasi(req, res) {
     const param = req.query;
     try {
-      const result = await deleteIbu(param);
+      const result = await deleteSiswaPrestasi(param);
       res.status(200).send({
         result,
       });
@@ -50,4 +55,4 @@ class IbuController {
   }
 }
 
-module.exports = new IbuController();
+module.exports = new SiswaPrestasiController();

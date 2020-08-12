@@ -1,10 +1,15 @@
-const { selectIbu, insertIbu, udpateIbu, deleteIbu } = require("../model/Ibu");
+const {
+  selectSiswaBeasiswa,
+  insertSiswaBeasiswa,
+  udpateSiswaBeasiswa,
+  deleteSiswaBeasiswa,
+} = require("../model/SiswaBeasiswa");
 
-class IbuController {
-  async doSearchIbu(req, res) {
+class SiswaBeasiswaController {
+  async doSearchSiswaBeasiswa(req, res) {
     const param = req.query;
     try {
-      const result = await selectIbu(param);
+      const result = await selectSiswaBeasiswa(param);
       res.status(200).send({
         result,
       });
@@ -13,10 +18,10 @@ class IbuController {
     }
   }
 
-  async doInsertIbu(req, res) {
+  async doInsertSiswaBeasiswa(req, res) {
     const param = req.body;
     try {
-      const result = await insertIbu(param);
+      const result = await insertSiswaBeasiswa(param);
       res.status(200).send({
         result,
       });
@@ -25,10 +30,10 @@ class IbuController {
     }
   }
 
-  async doUpdateIbu(req, res) {
+  async doUpdateSiswaBeasiswa(req, res) {
     const param = req.body;
     try {
-      const result = await udpateIbu(param, param.id);
+      const result = await udpateSiswaBeasiswa(param, param.id);
       res.status(200).send({
         result,
       });
@@ -37,10 +42,10 @@ class IbuController {
     }
   }
 
-  async doDeleteIbu(req, res) {
+  async doDeleteSiswaBeasiswa(req, res) {
     const param = req.query;
     try {
-      const result = await deleteIbu(param);
+      const result = await deleteSiswaBeasiswa(param);
       res.status(200).send({
         result,
       });
@@ -50,4 +55,4 @@ class IbuController {
   }
 }
 
-module.exports = new IbuController();
+module.exports = new SiswaBeasiswaController();

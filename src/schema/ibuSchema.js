@@ -22,8 +22,8 @@ const insertIbuParamSchema = BaseSchema.keys({
 }).unknown(true);
 
 const updateIbuParamSchema = BaseSchema.keys({
-  id_ayah: Joi.string().max(10).required(),
-  nama_ayah: Joi.string().max(50).required(),
+  id_ibu: Joi.string().max(10).required(),
+  nama_ibu: Joi.string().max(50).required(),
 }).unknown(true);
 
 module.exports = {

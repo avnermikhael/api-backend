@@ -12,6 +12,8 @@ const {
   deletePriodikParamSchema,
 } = require("../schema/priodikSchema");
 
+router.route("/getallpriodik").get(PriodikController.doSearchAllPriodik);
+
 router
   .route("/")
   .get(

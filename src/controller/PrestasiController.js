@@ -3,6 +3,7 @@ const {
   insertPrestasi,
   udpatePrestasi,
   deletePrestasi,
+  selectAllPrestasi,
 } = require("../model/Prestasi");
 
 class PrestasiController {
@@ -15,6 +16,18 @@ class PrestasiController {
       });
     } catch (err) {
       console.log("doSearch", err);
+    }
+  }
+
+  async doSearchAllPrestasi(req, res) {
+    const param = req.query;
+    try {
+      const result = await selectAllPrestasi(param);
+      res.status(200).send({
+        result,
+      });
+    } catch (err) {
+      console.log("doSearchAllPrestasi", err);
     }
   }
 

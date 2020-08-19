@@ -4,7 +4,7 @@ const insertPriodik = async (param) => {
   return new Promise(function (resolve, reject) {
     let sql =
       "INSERT INTO priodik" +
-      "(id_priodik,tinggi_badan,berat_badan,jarak_sekolah,waktu_tempuh)" +
+      "(id_priodik,tinggi_badan,berat_badan)" +
       "VALUES" +
       "?";
     var values = [
@@ -12,8 +12,8 @@ const insertPriodik = async (param) => {
         param.id_priodik,
         param.tinggi_badan,
         param.berat_badan,
-        param.jarak_sekolah,
-        param.waktu_tempuh,
+        // param.jarak_sekolah,
+        // param.waktu_tempuh,
       ],
     ];
 
@@ -33,6 +33,22 @@ const selectPriodik = async (param) => {
     let sql = "SELECT * FROM priodik where id_priodik = ?";
     var sql_var = [param.id];
     db.query(sql, sql_var, function (err, rows, fields) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        resolve(rows);
+      }
+    });
+  });
+};
+
+const selectAllPriodik = async (param) => {
+  return new Promise(function (resolve, reject) {
+    let sql =
+      "SELECT p.id_priodik, p.tinggi_badan, p.berat_badan, s.id_siswa, s.nama_lengkap FROM priodik as p LEFT JOIN siswa as s on p.id_priodik = s.id_priodik";
+    // var sql_var = [param.id];
+    db.query(sql, function (err, rows, fields) {
       if (err) {
         console.log(err);
         reject(err);
@@ -81,4 +97,5 @@ module.exports = {
   selectPriodik,
   udpatePriodik,
   deletePriodik,
+  selectAllPriodik,
 };

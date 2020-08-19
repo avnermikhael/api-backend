@@ -14,8 +14,8 @@ const insertPriodikParamSchema = BaseSchema.keys({
   id_priodik: Joi.string().max(10).required(),
   tinggi_badan: Joi.string().max(6).required(),
   berat_badan: Joi.string().max(6).required(),
-  jarak_sekolah: Joi.string().max(5).required(),
-  waktu_tempuh: Joi.string().max(20).required(),
+  // jarak_sekolah: Joi.string().max(5).required(),
+  // waktu_tempuh: Joi.string().max(20).required(),
 }).unknown(true);
 
 const updatePriodikParamSchema = BaseSchema.keys({

@@ -3,6 +3,7 @@ const {
   insertPriodik,
   udpatePriodik,
   deletePriodik,
+  selectAllPriodik,
 } = require("../model/Priodik");
 
 class PriodikController {
@@ -15,6 +16,18 @@ class PriodikController {
       });
     } catch (err) {
       console.log("doSearchPriodik", err);
+    }
+  }
+
+  async doSearchAllPriodik(req, res) {
+    const param = req.query;
+    try {
+      const result = await selectAllPriodik(param);
+      res.status(200).send({
+        result,
+      });
+    } catch (err) {
+      console.log("doSearchAllPriodik", err);
     }
   }
 

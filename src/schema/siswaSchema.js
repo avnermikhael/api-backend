@@ -15,20 +15,20 @@ const insertSiswaParamSchema = BaseSchema.keys({
   nama_lengkap: Joi.string().max(50).required(),
   jenis_kelamin: Joi.string().max(1).required(),
   tempat_lahir: Joi.string().max(50).required(),
-  tanggal_lahir: Joi.date().required(),
-  agama: Joi.string().max(20).required(),
-  kewarganegaraan: Joi.string().max(20).required(),
-  kebutuhan_khusus: Joi.string().max(20).required(),
-  alamat: Joi.string().max(50).required(),
-  tempat_tinggal: Joi.string().max(1).required(),
-  moda_transportasi: Joi.string().max(1).required(),
-  layak_pip: Joi.string().max(10).required(),
-  bank_name: Joi.string().max(20).required(),
-  akta_lahir: Joi.string().max(50).required(),
-  bank_account_number: Joi.string().max(20).required(),
-  bank_account_name: Joi.string().max(50).required(),
-  handphone: Joi.string().max(20).required(),
-  email: Joi.string().max(50).required(),
+  // tanggal_lahir: Joi.date().required(),
+  // agama: Joi.string().max(20).required(),
+  // kewarganegaraan: Joi.string().max(20).required(),
+  // kebutuhan_khusus: Joi.string().max(20).required(),
+  // alamat: Joi.string().max(50).required(),
+  // tempat_tinggal: Joi.string().max(1).required(),
+  // moda_transportasi: Joi.string().max(1).required(),
+  // layak_pip: Joi.string().max(10).required(),
+  // bank_name: Joi.string().max(20).required(),
+  // akta_lahir: Joi.string().max(50).required(),
+  // bank_account_number: Joi.string().max(20).required(),
+  // bank_account_name: Joi.string().max(50).required(),
+  // handphone: Joi.string().max(20).required(),
+  // email: Joi.string().max(50).required(),
 }).unknown(true);
 
 const updateSiswaParamSchema = BaseSchema.keys({
@@ -39,9 +39,33 @@ const updateSiswaParamSchema = BaseSchema.keys({
   email: Joi.string().max(50).required(),
 }).unknown(true);
 
+const updateAyahSiswaParamSchema = BaseSchema.keys({
+  id_ayah: Joi.string().max(10).required(),
+  id_siswa: Joi.string().max(10).required(),
+}).unknown(true);
+
+const updateIbuSiswaParamSchema = BaseSchema.keys({
+  id_ibu: Joi.string().max(10).required(),
+  id_siswa: Joi.string().max(10).required(),
+}).unknown(true);
+
+const updateWaliSiswaParamSchema = BaseSchema.keys({
+  id_wali: Joi.string().max(10).required(),
+  id_siswa: Joi.string().max(10).required(),
+}).unknown(true);
+
+const updatePriodikSiswaParamSchema = BaseSchema.keys({
+  id_priodik: Joi.string().max(10).required(),
+  id_siswa: Joi.string().max(10).required(),
+}).unknown(true);
+
 module.exports = {
   searchSiswaParamSchema,
   insertSiswaParamSchema,
   updateSiswaParamSchema,
   deleteSiswaParamSchema,
+  updateAyahSiswaParamSchema,
+  updateIbuSiswaParamSchema,
+  updateWaliSiswaParamSchema,
+  updatePriodikSiswaParamSchema,
 };

@@ -12,6 +12,8 @@ const {
   deleteBeasiswaParamSchema,
 } = require("../schema/beasiswaSchema");
 
+router.route("/getallbeasiswa").get(BeasiswaController.doSearchAllBeasiswa);
+
 router
   .route("/")
   .get(

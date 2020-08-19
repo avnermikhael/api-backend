@@ -11,7 +11,8 @@ const {
   updateKeluarParamSchema,
   deleteKeluarParamSchema,
 } = require("../schema/keluarSchema");
-const keluarSchema = require("../schema/keluarSchema");
+
+router.route("/getallkeluar").get(KeluarController.doSearchAllKeluar);
 
 router
   .route("/")

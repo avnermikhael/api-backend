@@ -3,19 +3,16 @@ var db = require("../helper/DBUtil");
 const insertWali = async (param) => {
   return new Promise(function (resolve, reject) {
     let sql =
-      "INSERT INTO wali" +
-      "(id_wali,nama_wali,nik_wali,tahun_lahir,pendidikan,pekerjaan,penghasilan_bulanan)" +
-      "VALUES" +
-      "?";
+      "INSERT INTO wali" + "(id_wali,nama_wali,nik_wali)" + "VALUES" + "?";
     var values = [
       [
         param.id_wali,
         param.nama_wali,
         param.nik_wali,
-        param.tahun_lahir,
-        param.pendidikan,
-        param.pekerjaan,
-        param.penghasilan_bulanan,
+        // param.tahun_lahir,
+        // param.pendidikan,
+        // param.pekerjaan,
+        // param.penghasilan_bulanan,
       ],
     ];
 
@@ -35,6 +32,22 @@ const selectWali = async (param) => {
     let sql = "SELECT * FROM wali where id_wali = ?";
     var sql_var = [param.id];
     db.query(sql, sql_var, function (err, rows, fields) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        resolve(rows);
+      }
+    });
+  });
+};
+
+const selectAllWali = async (param) => {
+  return new Promise(function (resolve, reject) {
+    let sql =
+      "SELECT w.id_wali, w.nama_wali, w.nik_wali, s.id_siswa, s.nama_lengkap FROM wali as w LEFT JOIN siswa as s on w.id_wali = s.id_wali";
+    // var sql_var = [param.id];
+    db.query(sql, function (err, rows, fields) {
       if (err) {
         console.log(err);
         reject(err);
@@ -82,4 +95,5 @@ module.exports = {
   selectWali,
   udpateWali,
   deleteWali,
+  selectAllWali,
 };

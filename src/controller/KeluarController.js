@@ -3,6 +3,7 @@ const {
   insertKeluar,
   udpateKeluar,
   deleteKeluar,
+  selectAllKeluar,
 } = require("../model/Keluar");
 
 class KeluarController {
@@ -15,6 +16,18 @@ class KeluarController {
       });
     } catch (err) {
       console.log("doSearch", err);
+    }
+  }
+
+  async doSearchAllKeluar(req, res) {
+    const param = req.query;
+    try {
+      const result = await selectAllKeluar(param);
+      res.status(200).send({
+        result,
+      });
+    } catch (err) {
+      console.log("doSearchAllKeluar", err);
     }
   }
 

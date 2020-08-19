@@ -16,10 +16,10 @@ routes.use("/ayah", ayahRouter);
 routes.use("/ibu", ibuRouter);
 routes.use("/wali", waliRouter);
 routes.use("/priodik", priodikRouter);
-routes.use("./beasiswa", beasiswaRouter);
-routes.use("./prestasi", prestasiRouter);
-routes.use("./keluar", keluarRouter);
-routes.use("./siswabeasiswa", siswabeasiswaRouter);
-routes.use("./siswaprestasi", siswaprestasiRouter);
+routes.use("/beasiswa", beasiswaRouter);
+routes.use("/prestasi", prestasiRouter);
+routes.use("/keluar", keluarRouter);
+routes.use("/siswabeasiswa", siswabeasiswaRouter);
+routes.use("/siswaprestasi", siswaprestasiRouter);
 
 module.exports = routes;

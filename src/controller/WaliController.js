@@ -3,6 +3,7 @@ const {
   insertWali,
   udpateWali,
   deleteWali,
+  selectAllWali,
 } = require("../model/Wali");
 
 class WaliController {
@@ -15,6 +16,18 @@ class WaliController {
       });
     } catch (err) {
       console.log("doSearchWali", err);
+    }
+  }
+
+  async doSearchAllWali(req, res) {
+    const param = req.query;
+    try {
+      const result = await selectAllWali(param);
+      res.status(200).send({
+        result,
+      });
+    } catch (err) {
+      console.log("doSearchAllWali", err);
     }
   }
 

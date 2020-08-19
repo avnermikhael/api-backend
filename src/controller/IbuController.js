@@ -1,4 +1,10 @@
-const { selectIbu, insertIbu, udpateIbu, deleteIbu } = require("../model/Ibu");
+const {
+  selectIbu,
+  insertIbu,
+  udpateIbu,
+  deleteIbu,
+  selectAllIbu,
+} = require("../model/Ibu");
 
 class IbuController {
   async doSearchIbu(req, res) {
@@ -10,6 +16,18 @@ class IbuController {
       });
     } catch (err) {
       console.log("doSearch", err);
+    }
+  }
+
+  async doSearchAllIbu(req, res) {
+    const param = req.query;
+    try {
+      const result = await selectAllIbu(param);
+      res.status(200).send({
+        result,
+      });
+    } catch (err) {
+      console.log("doSearchAllIbu", err);
     }
   }
 

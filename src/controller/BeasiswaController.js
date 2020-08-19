@@ -3,6 +3,7 @@ const {
   insertBeasiswa,
   udpateBeasiswa,
   deleteBeasiswa,
+  selectAllBeasiswa,
 } = require("../model/Beasiswa");
 
 class BeasiswaController {
@@ -15,6 +16,18 @@ class BeasiswaController {
       });
     } catch (err) {
       console.log("doSearchBeasiswa", err);
+    }
+  }
+
+  async doSearchAllBeasiswa(req, res) {
+    const param = req.query;
+    try {
+      const result = await selectAllBeasiswa(param);
+      res.status(200).send({
+        result,
+      });
+    } catch (err) {
+      console.log("doSearchAllBeasiswa", err);
     }
   }
 

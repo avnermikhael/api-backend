@@ -12,6 +12,8 @@ const {
   deleteIbuParamSchema,
 } = require("../schema/ibuSchema");
 
+router.route("/getallibu").get(IbuController.doSearchAllIbu);
+
 router
   .route("/")
   .get(celebrate({ query: searchIbuParamSchema }), IbuController.doSearchIbu)

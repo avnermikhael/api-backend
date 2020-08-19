@@ -3,15 +3,12 @@ var db = require("../helper/DBUtil");
 const insertKeluar = async (param) => {
   return new Promise(function (resolve, reject) {
     let sql =
-      "INSERT INTO keluar" +
-      "(id_keluar,info_keluar,tanggal_keluar,alasan,id_siswa)" +
-      "VALUES" +
-      "?";
+      "INSERT INTO keluar" + "(id_keluar,alasan,id_siswa)" + "VALUES" + "?";
     var values = [
       [
         param.id_keluar,
-        param.info_keluar,
-        param.tanggal_keluar,
+        // param.info_keluar,
+        // param.tanggal_keluar,
         param.alasan,
         param.id_siswa,
       ],
@@ -33,6 +30,21 @@ const selectKeluar = async (param) => {
     let sql = "SELECT * FROM keluar where id_keluar = ?";
     var sql_var = [param.id];
     db.query(sql, sql_var, function (err, rows, fields) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        resolve(rows);
+      }
+    });
+  });
+};
+
+const selectAllKeluar = async (param) => {
+  return new Promise(function (resolve, reject) {
+    let sql = "SELECT * FROM keluar";
+    // var sql_var = [param.id];
+    db.query(sql, function (err, rows, fields) {
       if (err) {
         console.log(err);
         reject(err);
@@ -80,4 +92,5 @@ module.exports = {
   selectKeluar,
   udpateKeluar,
   deleteKeluar,
+  selectAllKeluar,
 };

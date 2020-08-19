@@ -35,6 +35,21 @@ const selectBeasiswa = async (param) => {
   });
 };
 
+const selectAllBeasiswa = async (param) => {
+  return new Promise(function (resolve, reject) {
+    let sql = "SELECT * FROM beasiswa";
+    // var sql_var = [param.id];
+    db.query(sql, function (err, rows, fields) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        resolve(rows);
+      }
+    });
+  });
+};
+
 const udpateBeasiswa = async (param, id) => {
   return new Promise(function (resolve, reject) {
     let sql = "UPDATE beasiswa set keterangan=? where id_beasiswa=?";
@@ -72,4 +87,5 @@ module.exports = {
   selectBeasiswa,
   udpateBeasiswa,
   deleteBeasiswa,
+  selectAllBeasiswa,
 };

@@ -12,6 +12,8 @@ const {
   deleteAyahParamSchema,
 } = require("../schema/ayahSchema");
 
+router.route("/getallayah").get(AyahController.doSearchAllAyah);
+
 router
   .route("/")
   .get(celebrate({ query: searchAyahParamSchema }), AyahController.doSearchAyah)

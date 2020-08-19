@@ -12,6 +12,8 @@ const {
   deletePrestasiParamSchema,
 } = require("../schema/prestasiSchema");
 
+router.route("/getallprestasi").get(PrestasiController.doSearchAllPrestasi);
+
 router
   .route("/")
   .get(

@@ -12,8 +12,8 @@ const deleteKeluarParamSchema = BaseSchema.keys({
 
 const insertKeluarParamSchema = BaseSchema.keys({
   id_keluar: Joi.string().max(10).required(),
-  info_keluar: Joi.string().max(50).required(),
-  tanggal_keluar: Joi.string().max(20).required(),
+  // info_keluar: Joi.string().max(50).required(),
+  // tanggal_keluar: Joi.string().max(20).required(),
   alasan: Joi.string().max(50).required(),
   id_siswa: Joi.string().max(10).required(),
 }).unknown(true);

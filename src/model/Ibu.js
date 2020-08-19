@@ -2,21 +2,17 @@ var db = require("../helper/DBUtil");
 
 const insertIbu = async (param) => {
   return new Promise(function (resolve, reject) {
-    let sql =
-      "INSERT INTO ibu" +
-      "(id_ibu,nama_ibu,nik_ibu,tahun_lahir,pendidikan,pekerjaan,penghasilan_bulanan,berkebutuhan_khusus)" +
-      "VALUES" +
-      "?";
+    let sql = "INSERT INTO ibu" + "(id_ibu,nama_ibu,nik_ibu)" + "VALUES" + "?";
     var values = [
       [
         param.id_ibu,
         param.nama_ibu,
         param.nik_ibu,
-        param.tahun_lahir,
-        param.pendidikan,
-        param.pekerjaan,
-        param.penghasilan_bulanan,
-        param.berkebutuhan_khusus,
+        // param.tahun_lahir,
+        // param.pendidikan,
+        // param.pekerjaan,
+        // param.penghasilan_bulanan,
+        // param.berkebutuhan_khusus,
       ],
     ];
 
@@ -36,6 +32,22 @@ const selectIbu = async (param) => {
     let sql = "SELECT * FROM ibu where id_ibu = ?";
     var sql_var = [param.id];
     db.query(sql, sql_var, function (err, rows, fields) {
+      if (err) {
+        console.log(err);
+        reject(err);
+      } else {
+        resolve(rows);
+      }
+    });
+  });
+};
+
+const selectAllIbu = async (param) => {
+  return new Promise(function (resolve, reject) {
+    let sql =
+      "SELECT i.id_ibu, i.nama_ibu, i.nik_ibu, s.id_siswa, s.nama_lengkap FROM ibu as i LEFT JOIN siswa as s on i.id_ibu = s.id_ibu";
+    // var sql_var = [param.id];
+    db.query(sql, function (err, rows, fields) {
       if (err) {
         console.log(err);
         reject(err);
@@ -83,4 +95,5 @@ module.exports = {
   selectIbu,
   udpateIbu,
   deleteIbu,
+  selectAllIbu,
 };
